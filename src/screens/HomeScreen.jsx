@@ -10,46 +10,21 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import AppHeader from '../components/AppHeader';
+import products from '../data/productData.json';
 
 const { width } = Dimensions.get('window');
 
-const products = [
-  {
-    id: '1',
-    name: 'Minimal Orange Jacket',
-    price: '$89.99',
-    image: require('../assets/product-image-1.png'),
-    tag: 'New',
-  },
-  {
-    id: '2',
-    name: 'Classic Beige Coat',
-    price: '$119.99',
-    image: require('../assets/product-image-2.png'),
-    tag: 'Best',
-  },
-  {
-    id: '3',
-    name: 'Streetwear Hoodie',
-    price: '$79.99',
-    image: require('../assets/product-image-3.png'),
-    tag: 'Hot',
-  },
-  {
-    id: '4',
-    name: 'Grey Knit Sweater',
-    price: '$69.99',
-    image: require('../assets/product-image-4.png'),
-  },
-  {
-    id: '5',
-    name: 'Casual White Tee',
-    price: '$29.99',
-    image: require('../assets/product-image-5.png'),
-  },
-];
+const productImages = {
+  1: require('../assets/product-image-1.png'),
+  2: require('../assets/product-image-2.png'),
+  3: require('../assets/product-image-3.png'),
+  4: require('../assets/product-image-4.png'),
+  5: require('../assets/product-image-5.png'),
+};
 
 function HomeScreen() {
+  const heroProduct = products[0];
+
   return (
     <LinearGradient
       colors={['#0f172a', '#020617']}
@@ -71,27 +46,26 @@ function HomeScreen() {
         <View style={styles.heroSection}>
           <View style={styles.heroTextBlock}>
             <Text style={styles.heroLabel}>New Collection</Text>
-            <Text style={styles.heroTitle}>Street Minimal</Text>
+            <Text style={styles.heroTitle}>{heroProduct?.name}</Text>
             <Text style={styles.heroSubtitle}>Fresh drops for this season</Text>
 
             <View style={styles.heroPriceRow}>
-              <Text style={styles.heroPrice}>$89.99</Text>
+              <Text style={styles.heroPrice}>{heroProduct?.price}</Text>
               <Text style={styles.heroPriceLabel}>Starting from</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.heroButton}
-              activeOpacity={0.85}
-            >
+            <TouchableOpacity style={styles.heroButton} activeOpacity={0.85}>
               <Text style={styles.heroButtonText}>Shop Now</Text>
             </TouchableOpacity>
           </View>
 
-          <Image
-            source={products[0].image}
-            resizeMode="contain"
-            style={styles.heroImage}
-          />
+          {heroProduct && productImages[heroProduct.id] && (
+            <Image
+              source={productImages[heroProduct.id]}
+              resizeMode="contain"
+              style={styles.heroImage}
+            />
+          )}
         </View>
 
         <View style={styles.sectionHeader}>
@@ -104,33 +78,38 @@ function HomeScreen() {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.horizontalList}
         >
-          {products.slice(1, 4).map(product => (
-            <TouchableOpacity
-              key={product.id}
-              style={styles.card}
-              activeOpacity={0.85}
-            >
-              <View style={styles.cardImageWrapper}>
-                <Image
-                  source={product.image}
-                  resizeMode="cover"
-                  style={styles.cardImage}
-                />
-                {product.tag ? (
-                  <View style={styles.tagBadge}>
-                    <Text style={styles.tagText}>{product.tag}</Text>
-                  </View>
-                ) : null}
-              </View>
+          {products.slice(1, 4).map(product => {
+            const imageSource = productImages[product.id];
+            return (
+              <TouchableOpacity
+                key={product.id}
+                style={styles.card}
+                activeOpacity={0.85}
+              >
+                <View style={styles.cardImageWrapper}>
+                  {imageSource && (
+                    <Image
+                      source={imageSource}
+                      resizeMode="cover"
+                      style={styles.cardImage}
+                    />
+                  )}
+                  {product.tag ? (
+                    <View style={styles.tagBadge}>
+                      <Text style={styles.tagText}>{product.tag}</Text>
+                    </View>
+                  ) : null}
+                </View>
 
-              <View style={styles.cardBody}>
-                <Text numberOfLines={1} style={styles.cardTitle}>
-                  {product.name}
-                </Text>
-                <Text style={styles.cardPrice}>{product.price}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+                <View style={styles.cardBody}>
+                  <Text numberOfLines={1} style={styles.cardTitle}>
+                    {product.name}
+                  </Text>
+                  <Text style={styles.cardPrice}>{product.price}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
         </ScrollView>
 
         <View style={styles.sectionHeader}>
@@ -138,25 +117,30 @@ function HomeScreen() {
         </View>
 
         <View style={styles.recommendedRow}>
-          {products.slice(3).map(product => (
-            <TouchableOpacity
-              key={product.id}
-              style={styles.recommendedCard}
-              activeOpacity={0.85}
-            >
-              <Image
-                source={product.image}
-                resizeMode="cover"
-                style={styles.recommendedImage}
-              />
-              <View style={styles.recommendedMeta}>
-                <Text numberOfLines={1} style={styles.recommendedTitle}>
-                  {product.name}
-                </Text>
-                <Text style={styles.recommendedPrice}>{product.price}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
+          {products.slice(3).map(product => {
+            const imageSource = productImages[product.id];
+            return (
+              <TouchableOpacity
+                key={product.id}
+                style={styles.recommendedCard}
+                activeOpacity={0.85}
+              >
+                {imageSource && (
+                  <Image
+                    source={imageSource}
+                    resizeMode="cover"
+                    style={styles.recommendedImage}
+                  />
+                )}
+                <View style={styles.recommendedMeta}>
+                  <Text numberOfLines={1} style={styles.recommendedTitle}>
+                    {product.name}
+                  </Text>
+                  <Text style={styles.recommendedPrice}>{product.price}</Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </ScrollView>
     </LinearGradient>
@@ -335,4 +319,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-
