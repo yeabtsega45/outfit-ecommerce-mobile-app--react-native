@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "name": "Minimal Orange Jacket",
+    "price": "$89.99",
+    "image": "../assets/product-image-1.png",
+    "tag": "New"
+  },
+  {
+    "id": "2",
+    "name": "Classic Beige Coat",
+    "price": "$119.99",
+    "image": "../assets/product-image-2.png",
+    "tag": "Best"
+  },
+  {
+    "id": "3",
+    "name": "Streetwear Hoodie",
+    "price": "$79.99",
+    "image": "../assets/product-image-3.png",
+    "tag": "Hot"
+  },
+  {
+    "id": "4",
+    "name": "Grey Knit Sweater",
+    "price": "$69.99",
+    "image": "../assets/product-image-4.png"
+  },
+  {
+    "id": "5",
+    "name": "Casual White Tee",
+    "price": "$29.99",
+    "image": "../assets/product-image-5.png"
+  }
+]
