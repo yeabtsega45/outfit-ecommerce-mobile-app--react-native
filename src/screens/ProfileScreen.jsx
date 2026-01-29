@@ -8,8 +8,11 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import userData from '../data/userData.json';
 
-const profileImage = require('../assets/profile-picture.png');
+const avatarImages = {
+  'profile-picture': require('../assets/profile-picture.png'),
+};
 
 const menuItems = [
   { id: 'orders', icon: 'bag-outline', label: 'My Orders' },
@@ -55,9 +58,14 @@ function ProfileScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.profileCard}>
-          <Image source={profileImage} style={styles.avatar} />
-          <Text style={styles.userName}>Sarah Johnson</Text>
-          <Text style={styles.userEmail}>sarah.johnson@example.com</Text>
+          <Image
+            source={
+              avatarImages[userData.avatar] || avatarImages['profile-picture']
+            }
+            style={styles.avatar}
+          />
+          <Text style={styles.userName}>{userData.name}</Text>
+          <Text style={styles.userEmail}>{userData.email}</Text>
         </View>
 
         <View style={styles.menuCard}>

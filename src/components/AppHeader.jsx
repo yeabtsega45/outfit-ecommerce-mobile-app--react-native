@@ -1,10 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import userData from '../data/userData.json';
 
-const profileImage = require('../assets/profile-picture.png');
+const avatarImages = {
+  'profile-picture': require('../assets/profile-picture.png'),
+};
 
 function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
+  const avatarSource =
+    avatarImages[userData.avatar] || avatarImages['profile-picture'];
+
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -29,7 +35,7 @@ function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
           <Ionicons name="bag-outline" size={20} color="#333333" />
         </TouchableOpacity>
 
-        <Image source={profileImage} style={styles.avatar} />
+        <Image source={avatarSource} style={styles.avatar} />
       </View>
     </View>
   );
