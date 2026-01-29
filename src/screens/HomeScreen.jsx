@@ -31,7 +31,7 @@ function HomeScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
       >
         <AppHeader
-          title="Outfit Store"
+          title="KB Outfit Store"
           subtitle="Discover your next look"
           onMenuPress={() => {}}
           onCartPress={() => {}}
