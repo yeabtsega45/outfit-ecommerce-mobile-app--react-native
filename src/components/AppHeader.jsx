@@ -12,7 +12,7 @@ function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
         onPress={onMenuPress}
         activeOpacity={0.7}
       >
-        <Ionicons name="menu" size={22} color="#e5e7eb" />
+        <Ionicons name="menu" size={22} color="#333333" />
       </TouchableOpacity>
 
       <View style={styles.centerContent}>
@@ -26,7 +26,7 @@ function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
           onPress={onCartPress}
           activeOpacity={0.7}
         >
-          <Ionicons name="bag-outline" size={20} color="#e5e7eb" />
+          <Ionicons name="bag-outline" size={20} color="#333333" />
         </TouchableOpacity>
 
         <Image source={profileImage} style={styles.avatar} />
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 20,
     fontWeight: '700',
-    color: '#f9fafb',
+    color: '#333333',
     letterSpacing: 0.3,
   },
   subtitle: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: '#6B7280',
     marginBottom: 2,
   },
   rightGroup: {
@@ -69,9 +69,14 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+    backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: 'rgba(55, 65, 81, 0.6)',
+    borderColor: '#E5E7EB',
+    shadowColor: '#000',
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   avatar: {
     width: 34,

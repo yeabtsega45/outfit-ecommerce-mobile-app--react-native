@@ -8,7 +8,6 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 import AppHeader from '../components/AppHeader';
 import products from '../data/productData.json';
 
@@ -26,12 +25,7 @@ function HomeScreen({ navigation }) {
   const heroProduct = products[0];
 
   return (
-    <LinearGradient
-      colors={['#0f172a', '#020617']}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
-      style={styles.gradient}
-    >
+    <View style={styles.container}>
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
@@ -170,15 +164,16 @@ function HomeScreen({ navigation }) {
           })}
         </View>
       </ScrollView>
-    </LinearGradient>
+    </View>
   );
 }
 
 const CARD_WIDTH = width * 0.6;
 
 const styles = StyleSheet.create({
-  gradient: {
+  container: {
     flex: 1,
+    backgroundColor: '#FBF0F1',
   },
   scrollContent: {
     paddingBottom: 32,
@@ -192,7 +187,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     overflow: 'hidden',
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
   heroTextBlock: {
     flex: 1,
@@ -202,18 +202,18 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textTransform: 'uppercase',
     letterSpacing: 1,
-    color: '#f97316',
+    color: '#ED7E7E',
     marginBottom: 4,
   },
   heroTitle: {
     fontSize: 24,
     fontWeight: '800',
-    color: '#f9fafb',
+    color: '#333333',
     marginBottom: 4,
   },
   heroSubtitle: {
     fontSize: 13,
-    color: '#9ca3af',
+    color: '#6B7280',
     marginBottom: 12,
   },
   heroPriceRow: {
@@ -225,24 +225,24 @@ const styles = StyleSheet.create({
   heroPrice: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#f97316',
+    color: '#ED7E7E',
   },
   heroPriceLabel: {
     fontSize: 12,
-    color: '#9ca3af',
+    color: '#9CA3AF',
     marginBottom: 2,
   },
   heroButton: {
     paddingHorizontal: 18,
     paddingVertical: 8,
     borderRadius: 999,
-    backgroundColor: '#f97316',
+    backgroundColor: '#ED7E7E',
     alignSelf: 'flex-start',
   },
   heroButtonText: {
     fontSize: 13,
     fontWeight: '600',
-    color: '#0b1120',
+    color: '#FFFFFF',
   },
   heroImage: {
     width: 120,
@@ -258,11 +258,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: '#f9fafb',
+    color: '#333333',
   },
   sectionLink: {
     fontSize: 13,
-    color: '#9ca3af',
+    color: '#6B7280',
   },
   horizontalList: {
     paddingHorizontal: 20,
@@ -271,9 +271,14 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     borderRadius: 22,
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    backgroundColor: '#FFFFFF',
     marginRight: 16,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
   cardImageWrapper: {
     width: '100%',
@@ -291,11 +296,16 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 999,
-    backgroundColor: 'rgba(15, 23, 42, 0.9)',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 2,
   },
   tagText: {
     fontSize: 11,
-    color: '#f97316',
+    color: '#ED7E7E',
     fontWeight: '600',
   },
   cardBody: {
@@ -304,13 +314,13 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: 14,
-    color: '#e5e7eb',
+    color: '#333333',
     marginBottom: 4,
   },
   cardPrice: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#f97316',
+    color: '#ED7E7E',
   },
   recommendedRow: {
     marginTop: 14,
@@ -322,7 +332,12 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 10,
     borderRadius: 18,
-    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000',
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
   },
   recommendedImage: {
     width: 64,
@@ -335,13 +350,13 @@ const styles = StyleSheet.create({
   },
   recommendedTitle: {
     fontSize: 14,
-    color: '#e5e7eb',
+    color: '#333333',
     marginBottom: 3,
   },
   recommendedPrice: {
     fontSize: 14,
     fontWeight: '700',
-    color: '#f97316',
+    color: '#ED7E7E',
   },
 });
 

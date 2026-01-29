@@ -13,8 +13,8 @@ const HomeStack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   tabBar: {
-    backgroundColor: '#020617',
-    borderTopColor: '#111827',
+    backgroundColor: '#FBF0F1',
+    borderTopColor: '#E5E7EB',
     borderTopWidth: 1,
     paddingBottom: 8,
     paddingTop: 8,
@@ -24,17 +24,17 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#020617',
+    backgroundColor: '#FBF0F1',
   },
   placeholderTitle: {
     fontSize: 22,
     fontWeight: '700',
-    color: '#e5e7eb',
+    color: '#333333',
     marginBottom: 4,
   },
   placeholderSubtitle: {
     fontSize: 14,
-    color: '#9ca3af',
+    color: '#6B7280',
   },
 });
 
@@ -42,7 +42,7 @@ const navigationTheme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    background: '#020617',
+    background: '#FBF0F1',
   },
 };
 
@@ -50,8 +50,8 @@ const screenOptions = {
   headerShown: false,
   tabBarShowLabel: false,
   tabBarStyle: styles.tabBar,
-  tabBarActiveTintColor: '#f97316',
-  tabBarInactiveTintColor: '#6b7280',
+  tabBarActiveTintColor: '#ED7E7E',
+  tabBarInactiveTintColor: '#9CA3AF',
 };
 
 const homeOptions = {
@@ -126,7 +126,7 @@ function ProfileScreen() {
 function App() {
   return (
     <NavigationContainer theme={navigationTheme}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar barStyle="dark-content" />
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen
           name="Home"
