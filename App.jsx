@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './src/screens/HomeScreen';
 import ProductDetailsScreen from './src/screens/ProductDetailsScreen';
+import CartScreen from './src/screens/CartScreen';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -116,10 +117,6 @@ function PlaceholderScreen({ title }) {
 
 function FavoritesScreen() {
   return <PlaceholderScreen title="Favorites" />;
-}
-
-function CartScreen() {
-  return <PlaceholderScreen title="Cart" />;
 }
 
 function ProfileScreen() {
