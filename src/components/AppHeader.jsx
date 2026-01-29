@@ -4,12 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const profileImage = require('../assets/profile-picture.png');
 
-function AppHeader({
-  title,
-  subtitle,
-  onMenuPress,
-  onCartPress,
-}) {
+function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
   return (
     <View style={styles.container}>
       <TouchableOpacity
@@ -87,4 +82,3 @@ const styles = StyleSheet.create({
 });
 
 export default AppHeader;
-
