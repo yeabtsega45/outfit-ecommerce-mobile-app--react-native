@@ -7,9 +7,11 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './src/screens/HomeScreen';
 import ProductDetailsScreen from './src/screens/ProductDetailsScreen';
 import CartScreen from './src/screens/CartScreen';
+import FavouritesScreen from './src/screens/FavouritesScreen';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
+const FavoritesStack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   tabBar: {
@@ -106,6 +108,21 @@ function HomeStackNavigator() {
   );
 }
 
+function FavoritesStackNavigator() {
+  return (
+    <FavoritesStack.Navigator screenOptions={{ headerShown: false }}>
+      <FavoritesStack.Screen
+        name="FavouritesScreen"
+        component={FavouritesScreen}
+      />
+      <FavoritesStack.Screen
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+      />
+    </FavoritesStack.Navigator>
+  );
+}
+
 function PlaceholderScreen({ title }) {
   return (
     <View style={styles.placeholderContainer}>
@@ -113,10 +130,6 @@ function PlaceholderScreen({ title }) {
       <Text style={styles.placeholderSubtitle}>Content coming soon</Text>
     </View>
   );
-}
-
-function FavoritesScreen() {
-  return <PlaceholderScreen title="Favorites" />;
 }
 
 function ProfileScreen() {
@@ -135,7 +148,7 @@ function App() {
         />
         <Tab.Screen
           name="Favorites"
-          component={FavoritesScreen}
+          component={FavoritesStackNavigator}
           options={favoritesOptions}
         />
         <Tab.Screen name="Cart" component={CartScreen} options={cartOptions} />
