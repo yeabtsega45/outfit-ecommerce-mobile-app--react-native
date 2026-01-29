@@ -2,10 +2,13 @@ import React from 'react';
 import { StatusBar, View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './src/screens/HomeScreen';
+import ProductDetailsScreen from './src/screens/ProductDetailsScreen';
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createNativeStackNavigator();
 
 const styles = StyleSheet.create({
   tabBar: {
@@ -90,6 +93,18 @@ const profileOptions = {
   ),
 };
 
+function HomeStackNavigator() {
+  return (
+    <HomeStack.Navigator screenOptions={{ headerShown: false }}>
+      <HomeStack.Screen name="HomeScreen" component={HomeScreen} />
+      <HomeStack.Screen
+        name="ProductDetails"
+        component={ProductDetailsScreen}
+      />
+    </HomeStack.Navigator>
+  );
+}
+
 function PlaceholderScreen({ title }) {
   return (
     <View style={styles.placeholderContainer}>
@@ -116,17 +131,17 @@ function App() {
     <NavigationContainer theme={navigationTheme}>
       <StatusBar barStyle="light-content" />
       <Tab.Navigator screenOptions={screenOptions}>
-        <Tab.Screen name="Home" component={HomeScreen} options={homeOptions} />
+        <Tab.Screen
+          name="Home"
+          component={HomeStackNavigator}
+          options={homeOptions}
+        />
         <Tab.Screen
           name="Favorites"
           component={FavoritesScreen}
           options={favoritesOptions}
         />
-        <Tab.Screen
-          name="Cart"
-          component={CartScreen}
-          options={cartOptions}
-        />
+        <Tab.Screen name="Cart" component={CartScreen} options={cartOptions} />
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}

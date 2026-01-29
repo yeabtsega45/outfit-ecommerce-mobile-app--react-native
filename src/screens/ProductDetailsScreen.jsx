@@ -7,8 +7,8 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
+import products from '../data/productData.json';
 
-const productImage = require('../assets/product-image-2.png');
 const profileImage = require('../assets/profile-picture.png');
 
 const SIZES = ['S', 'M', 'L', 'XL'];
@@ -21,9 +21,22 @@ const COLORS = [
   '#111827',
 ];
 
-function ProductDetailsScreen() {
+const productImages = {
+  1: require('../assets/product-image-1.png'),
+  2: require('../assets/product-image-2.png'),
+  3: require('../assets/product-image-3.png'),
+  4: require('../assets/product-image-4.png'),
+  5: require('../assets/product-image-5.png'),
+};
+
+function ProductDetailsScreen({ route }) {
   const [selectedSize, setSelectedSize] = useState('M');
   const [selectedColorIndex, setSelectedColorIndex] = useState(1);
+
+  const productId = route?.params?.productId;
+  const product =
+    products.find(item => item.id === productId) ?? products[0] ?? null;
+  const productImage = product ? productImages[product.id] : null;
 
   return (
     <View style={styles.screen}>
@@ -47,18 +60,22 @@ function ProductDetailsScreen() {
               <Image source={profileImage} style={styles.avatar} />
             </View>
 
-            <Image
-              source={productImage}
-              style={styles.productImage}
-              resizeMode="cover"
-            />
+            {productImage && (
+              <Image
+                source={productImage}
+                style={styles.productImage}
+                resizeMode="cover"
+              />
+            )}
           </View>
 
           <View style={styles.detailsSection}>
-            <View style={styles.titleRow}>
-              <Text style={styles.productName}>Winter Coat</Text>
-              <Text style={styles.productPrice}>$65.9</Text>
-            </View>
+            {product && (
+              <View style={styles.titleRow}>
+                <Text style={styles.productName}>{product.name}</Text>
+                <Text style={styles.productPrice}>{product.price}</Text>
+              </View>
+            )}
 
             <View style={styles.section}>
               <Text style={styles.sectionLabel}>Size</Text>

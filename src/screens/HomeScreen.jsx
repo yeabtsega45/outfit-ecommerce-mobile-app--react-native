@@ -22,7 +22,7 @@ const productImages = {
   5: require('../assets/product-image-5.png'),
 };
 
-function HomeScreen() {
+function HomeScreen({ navigation }) {
   const heroProduct = products[0];
 
   return (
@@ -54,17 +54,34 @@ function HomeScreen() {
               <Text style={styles.heroPriceLabel}>Starting from</Text>
             </View>
 
-            <TouchableOpacity style={styles.heroButton} activeOpacity={0.85}>
+            <TouchableOpacity
+              style={styles.heroButton}
+              activeOpacity={0.85}
+              onPress={() =>
+                navigation.navigate('ProductDetails', {
+                  productId: heroProduct?.id,
+                })
+              }
+            >
               <Text style={styles.heroButtonText}>Shop Now</Text>
             </TouchableOpacity>
           </View>
 
           {heroProduct && productImages[heroProduct.id] && (
-            <Image
-              source={productImages[heroProduct.id]}
-              resizeMode="contain"
-              style={styles.heroImage}
-            />
+            <TouchableOpacity
+              activeOpacity={0.85}
+              onPress={() =>
+                navigation.navigate('ProductDetails', {
+                  productId: heroProduct.id,
+                })
+              }
+            >
+              <Image
+                source={productImages[heroProduct.id]}
+                resizeMode="contain"
+                style={styles.heroImage}
+              />
+            </TouchableOpacity>
           )}
         </View>
 
@@ -85,6 +102,11 @@ function HomeScreen() {
                 key={product.id}
                 style={styles.card}
                 activeOpacity={0.85}
+                onPress={() =>
+                  navigation.navigate('ProductDetails', {
+                    productId: product.id,
+                  })
+                }
               >
                 <View style={styles.cardImageWrapper}>
                   {imageSource && (
@@ -124,6 +146,11 @@ function HomeScreen() {
                 key={product.id}
                 style={styles.recommendedCard}
                 activeOpacity={0.85}
+                onPress={() =>
+                  navigation.navigate('ProductDetails', {
+                    productId: product.id,
+                  })
+                }
               >
                 {imageSource && (
                   <Image
