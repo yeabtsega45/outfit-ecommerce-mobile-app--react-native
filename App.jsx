@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, View, Text, StyleSheet } from 'react-native';
+import { StatusBar, StyleSheet } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -8,6 +8,7 @@ import HomeScreen from './src/screens/HomeScreen';
 import ProductDetailsScreen from './src/screens/ProductDetailsScreen';
 import CartScreen from './src/screens/CartScreen';
 import FavouritesScreen from './src/screens/FavouritesScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createNativeStackNavigator();
@@ -21,22 +22,6 @@ const styles = StyleSheet.create({
     paddingBottom: 8,
     paddingTop: 8,
     height: 64,
-  },
-  placeholderContainer: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#FBF0F1',
-  },
-  placeholderTitle: {
-    fontSize: 22,
-    fontWeight: '700',
-    color: '#333333',
-    marginBottom: 4,
-  },
-  placeholderSubtitle: {
-    fontSize: 14,
-    color: '#6B7280',
   },
 });
 
@@ -121,19 +106,6 @@ function FavoritesStackNavigator() {
       />
     </FavoritesStack.Navigator>
   );
-}
-
-function PlaceholderScreen({ title }) {
-  return (
-    <View style={styles.placeholderContainer}>
-      <Text style={styles.placeholderTitle}>{title}</Text>
-      <Text style={styles.placeholderSubtitle}>Content coming soon</Text>
-    </View>
-  );
-}
-
-function ProfileScreen() {
-  return <PlaceholderScreen title="Profile" />;
 }
 
 function App() {
