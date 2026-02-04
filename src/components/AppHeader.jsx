@@ -7,6 +7,8 @@ const avatarImages = {
   'profile-picture': require('../assets/profile-picture.png'),
 };
 
+const logo = require('../assets/logo.png');
+
 function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
   const avatarSource =
     avatarImages[userData.avatar] || avatarImages['profile-picture'];
@@ -18,7 +20,7 @@ function AppHeader({ title, subtitle, onMenuPress, onCartPress }) {
         onPress={onMenuPress}
         activeOpacity={0.7}
       >
-        <Ionicons name="menu" size={22} color="#333333" />
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
       </TouchableOpacity>
 
       <View style={styles.centerContent}>
@@ -68,6 +70,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     gap: 10,
+  },
+  logo: {
+    width: 22,
+    height: 22,
   },
   iconButton: {
     width: 32,
